@@ -23,3 +23,4 @@ node_modules/
 *.zip
 /build/
 /dist/
+.svn/
