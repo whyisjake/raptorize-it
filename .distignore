@@ -1,0 +1,30 @@
+# Directories
+/.git
+/.github
+/node_modules
+/vendor
+/.svn
+
+# Files
+/.distignore
+/.editorconfig
+/.eslintignore
+/.eslintrc.json
+/.gitattributes
+/.gitignore
+/.wp-env.json
+/composer.json
+/composer.lock
+/package.json
+/package-lock.json
+/phpcs.xml.dist
+/README.md
+
+# Source files (built files are in /build)
+/src
+
+# Development
+*.log
+*.map
+.DS_Store
+Thumbs.db
