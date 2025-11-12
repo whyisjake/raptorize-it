@@ -5,7 +5,7 @@ Tags: awesome, images, jquery, raptor, surprise, Konami code
 Requires at least: 5.0
 Requires PHP: 7.0
 Tested up to: 6.7
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -49,6 +49,17 @@ This might cause the image to not show up, only unleashing the raptor scream ins
 1. Raptor in action!
 
 == Changelog ==
+
+= 1.1.0 =
+
+* Added Gutenberg blocks support
+* New "Invisible Raptor" block with configurable Konami Code and Timer triggers
+* New "Raptorize Button" block variation for core Button block
+* Added wp-env configuration for local development
+* Upgraded build toolchain to @wordpress/scripts v27 for modern Node.js compatibility
+* Added automated GitHub Actions workflow for WordPress.org deployment
+* Improved script enqueuing and initialization
+* Fixed block registration and editor integration
 
 = 1.0.0 =
 

@@ -1,6 +1,6 @@
 {
   "name": "raptorize-it",
-  "version": "0.5.2",
+  "version": "1.1.0",
   "description": "An awesome jQuery plugin that unleahes a Raptor of Jurassic proportions.",
   "main": "jquery-1.4.1.min.js",
   "keywords": [
