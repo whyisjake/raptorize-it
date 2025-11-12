@@ -1,11 +1,11 @@
 === Raptorize It ===
 Contributors: whyisjake
 Donate link: http://jakespurlock.com/donate/
-Tags: awesome, images, jquery, raptor, surprise, Konami code
+Tags: awesome, images, jquery, raptor, surprise
 Requires at least: 5.0
-Requires PHP: 7.0
-Tested up to: 6.7
-Stable tag: 1.1.0
+Requires PHP: 8.0
+Tested up to: 6.9
+Stable tag: 1.1.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -49,6 +49,12 @@ This might cause the image to not show up, only unleashing the raptor scream ins
 1. Raptor in action!
 
 == Changelog ==
+
+= 1.1.1 =
+
+* Add WordPress.org plugin directory assets (icon and banner images)
+* Update PHP requirement to 8.0
+* Sync PHP requirement in plugin header with readme.txt
 
 = 1.1.0 =
 

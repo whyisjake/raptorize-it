@@ -3,9 +3,9 @@
  * Plugin Name: Raptorize It
  * Plugin URI: http://jakespurlock.com/wordpress/raptor
  * Description: You're sitting at your desk, coding up a 500 page site, knee-deep in Extreme Cheddar Doritos sipping on a liter of Code Red Mountain Dew when you realize...this page would be so much more awesome with a VELOCIRAPTOR. You immediately scramble home to grab your Jurassic Park DVDs so can screencap a Velociraptor attack, but then you realize how hard it would be to make an awesome raptor run across the site you were coding. Plus, how are you going to get that trademark velociraptor screech?
- * Version: 1.1.0
+ * Version: 1.1.1
  * Requires at least: 5.0
- * Requires PHP: 7.0
+ * Requires PHP: 8.0
  * Author: Jake Spurlock
  * Author URI: http://jakespurlock.com/
  * License: MIT
