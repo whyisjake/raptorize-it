@@ -26,7 +26,5 @@
 			"type": "number",
 			"default": 5000
 		}
-	},
-	"editorScript": "file:./index.js",
-	"editorStyle": "file:./editor.scss"
+	}
 }

@@ -27,11 +27,32 @@ add_action( 'wp_enqueue_scripts', 'raptorize_enqueue_scripts' );
  * Register Gutenberg blocks.
  */
 function raptorize_register_blocks() {
+	// Get asset file for editor script dependencies.
+	$asset_file = include plugin_dir_path( __FILE__ ) . 'build/index.asset.php';
+
+	// Register block editor script.
+	wp_register_script(
+		'raptorize-blocks-editor',
+		plugins_url( 'build/index.js', __FILE__ ),
+		$asset_file['dependencies'],
+		$asset_file['version']
+	);
+
+	// Register block editor styles.
+	wp_register_style(
+		'raptorize-blocks-editor',
+		plugins_url( 'build/index.css', __FILE__ ),
+		array(),
+		$asset_file['version']
+	);
+
 	// Register invisible raptor block.
 	register_block_type(
 		__DIR__ . '/build/blocks/invisible-raptor',
 		array(
-			'render_callback' => 'raptorize_render_invisible_block',
+			'editor_script'     => 'raptorize-blocks-editor',
+			'editor_style'      => 'raptorize-blocks-editor',
+			'render_callback'   => 'raptorize_render_invisible_block',
 		)
 	);
 }
@@ -51,26 +72,33 @@ function raptorize_render_invisible_block( $attributes ) {
 		return '';
 	}
 
-	$script = '';
+	// Ensure the raptorize script is enqueued.
+	wp_enqueue_script( 'raptorize' );
 
-	if ( $enable_konami ) {
-		$script .= "jQuery(document).ready(function($) {
-			$('body').raptorize({
-				'enterOn': 'konami-code'
+	// Add inline script via wp_footer to ensure it runs after scripts are loaded.
+	add_action(
+		'wp_footer',
+		function () use ( $enable_konami, $enable_timer, $timer_delay ) {
+			?>
+			<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				<?php if ( $enable_konami ) : ?>
+				$('body').raptorize({
+					'enterOn': 'konami-code'
+				});
+				<?php endif; ?>
+				<?php if ( $enable_timer ) : ?>
+				$('body').raptorize({
+					'enterOn': 'timer',
+					'delayTime': <?php echo intval( $timer_delay ); ?>
+				});
+				<?php endif; ?>
 			});
-		});";
-	}
-
-	if ( $enable_timer ) {
-		$script .= "jQuery(document).ready(function($) {
-			$('body').raptorize({
-				'enterOn': 'timer',
-				'delayTime': {$timer_delay}
-			});
-		});";
-	}
-
-	wp_add_inline_script( 'raptorize', $script );
+			</script>
+			<?php
+		},
+		20
+	);
 
 	return '';
 }
