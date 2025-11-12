@@ -20,12 +20,66 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_action( 'wp_enqueue_scripts', 'raptor_me' );
+add_action( 'init', 'raptorize_register_blocks' );
+add_action( 'wp_enqueue_scripts', 'raptorize_enqueue_scripts' );
+
+/**
+ * Register Gutenberg blocks.
+ */
+function raptorize_register_blocks() {
+	// Register invisible raptor block.
+	register_block_type(
+		__DIR__ . '/build/blocks/invisible-raptor',
+		array(
+			'render_callback' => 'raptorize_render_invisible_block',
+		)
+	);
+}
+
+/**
+ * Render callback for invisible raptor block.
+ *
+ * @param array $attributes Block attributes.
+ * @return string
+ */
+function raptorize_render_invisible_block( $attributes ) {
+	$enable_konami = isset( $attributes['enableKonamiCode'] ) ? $attributes['enableKonamiCode'] : true;
+	$enable_timer  = isset( $attributes['enableTimer'] ) ? $attributes['enableTimer'] : false;
+	$timer_delay   = isset( $attributes['timerDelay'] ) ? $attributes['timerDelay'] : 5000;
+
+	if ( ! $enable_konami && ! $enable_timer ) {
+		return '';
+	}
+
+	$script = '';
+
+	if ( $enable_konami ) {
+		$script .= "jQuery(document).ready(function($) {
+			$('body').raptorize({
+				'enterOn': 'konami-code'
+			});
+		});";
+	}
+
+	if ( $enable_timer ) {
+		$script .= "jQuery(document).ready(function($) {
+			$('body').raptorize({
+				'enterOn': 'timer',
+				'delayTime': {$timer_delay}
+			});
+		});";
+	}
+
+	wp_add_inline_script( 'raptorize', $script );
+
+	return '';
+}
 
 /**
  * Enqueue the raptorize script and styles.
  */
-function raptor_me() {
+function raptorize_enqueue_scripts() {
+	// Enqueue base raptorize script.
 	wp_enqueue_script(
 		'raptorize',
 		plugins_url( 'jquery.raptorize.1.0.js', __FILE__ ),
@@ -42,15 +96,13 @@ function raptor_me() {
 		)
 	);
 
-	// Add inline script to initialize raptorize.
-	$inline_script = "
-		jQuery(document).ready(function($) {
-			// For the Konami Code version
-			$('body').raptorize({
-				'enterOn': 'konami-code'
-			});
-		});
-	";
-
-	wp_add_inline_script( 'raptorize', $inline_script );
+	// Enqueue frontend script for buttons.
+	$asset_file = include plugin_dir_path( __FILE__ ) . 'build/frontend.asset.php';
+	wp_enqueue_script(
+		'raptorize-frontend',
+		plugins_url( 'build/frontend.js', __FILE__ ),
+		array_merge( array( 'jquery', 'raptorize' ), $asset_file['dependencies'] ),
+		$asset_file['version'],
+		true
+	);
 }

@@ -1,0 +1,32 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "raptorize/invisible-raptor",
+	"version": "1.0.0",
+	"title": "Invisible Raptor",
+	"category": "widgets",
+	"icon": "visibility",
+	"description": "Add raptor functionality to your page with Konami Code or timer activation.",
+	"keywords": ["raptor", "easter egg", "konami", "fun"],
+	"textDomain": "raptorize-it",
+	"supports": {
+		"html": false,
+		"multiple": false
+	},
+	"attributes": {
+		"enableKonamiCode": {
+			"type": "boolean",
+			"default": true
+		},
+		"enableTimer": {
+			"type": "boolean",
+			"default": false
+		},
+		"timerDelay": {
+			"type": "number",
+			"default": 5000
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./editor.scss"
+}
