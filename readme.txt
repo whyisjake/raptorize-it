@@ -5,7 +5,7 @@ Tags: awesome, images, jquery, raptor, surprise
 Requires at least: 5.0
 Requires PHP: 8.0
 Tested up to: 6.9
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -49,6 +49,12 @@ This might cause the image to not show up, only unleashing the raptor scream ins
 1. Raptor in action!
 
 == Changelog ==
+
+= 1.1.2 =
+
+* Add status badges to README.md
+* Fix GitHub Action permissions for release asset uploads
+* Update documentation with PHP 8.0 requirement
 
 = 1.1.1 =
 

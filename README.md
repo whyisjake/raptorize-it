@@ -1,5 +1,11 @@
 # Raptorize It
 
+[![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/raptorize-it.svg)](https://wordpress.org/plugins/raptorize-it/)
+[![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/raptorize-it.svg)](https://wordpress.org/plugins/raptorize-it/)
+[![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/rating/raptorize-it.svg)](https://wordpress.org/plugins/raptorize-it/)
+[![Deploy to WordPress.org](https://github.com/whyisjake/raptorize-it/actions/workflows/deploy-to-wordpress-org.yml/badge.svg)](https://github.com/whyisjake/raptorize-it/actions/workflows/deploy-to-wordpress-org.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 An awesome jQuery plugin that unleashes a Raptor of Jurassic proportions on your WordPress site!
 
 ## Description
@@ -23,7 +29,7 @@ You're sitting at your desk, coding up a 500 page site, knee-deep in Extreme Che
 ## Requirements
 
 - WordPress 5.0 or higher
-- PHP 7.0 or higher
+- PHP 8.0 or higher
 
 ## Development
 
