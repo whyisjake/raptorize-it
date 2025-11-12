@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<ruleset name="Raptorize It Coding Standards">
+	<description>Apply WordPress Coding Standards to Raptorize It plugin</description>
+
+	<!-- What to scan -->
+	<file>raptorize-it.php</file>
+
+	<!-- Exclude the following directories and files -->
+	<exclude-pattern>node_modules/</exclude-pattern>
+	<exclude-pattern>vendor/</exclude-pattern>
+	<exclude-pattern>.svn/</exclude-pattern>
+	<exclude-pattern>*.min.js</exclude-pattern>
+	<exclude-pattern>*.asset.php</exclude-pattern>
+
+	<!-- Only scan PHP files. -->
+	<arg name="extensions" value="php"/>
+
+	<!-- Whenever possible, cache the scan results and re-use those for unchanged files on the next scan. -->
+	<arg name="cache"/>
+
+	<!-- Set the memory limit to 256M.
+		 For most standard PHP configurations, this means the memory limit will temporarily be raised.
+		 Ref: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#specifying-phpini-settings
+	-->
+	<ini name="memory_limit" value="256M"/>
+
+	<!-- Strip the filepaths down to the relevant bit. -->
+	<arg name="basepath" value="./"/>
+
+	<!-- Check up to 20 files simultaneously. -->
+	<arg name="parallel" value="20"/>
+
+	<!-- Show sniff codes in all reports. -->
+	<arg value="ps"/>
+
+	<!-- Show progress and sniff codes. -->
+	<arg name="colors"/>
+
+	<!-- Rules: WordPress Coding Standards -->
+	<rule ref="WordPress-Core"/>
+	<rule ref="WordPress-Docs"/>
+
+	<!-- Check for PHP cross-version compatibility. -->
+	<config name="testVersion" value="7.0-"/>
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!-- Verify that the text_domain is set to the desired text-domain. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="raptorize-it"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Allow for plugin specific prefix in hook names. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="raptor"/>
+				<element value="raptorize"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Check for correct spacing. -->
+	<rule ref="WordPress.WhiteSpace"/>
+</ruleset>

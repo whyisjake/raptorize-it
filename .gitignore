@@ -1,0 +1,26 @@
+# Composer
+/vendor/
+composer.lock
+
+# Node
+node_modules/
+package-lock.json
+
+# WordPress
+.DS_Store
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Linting caches
+.phpcs-cache
+.eslintcache
+
+# Build files
+*.zip
+/build/
+/dist/

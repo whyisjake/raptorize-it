@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build files
+build/
+dist/
+
+# SVN
+.svn/
+
+# Other
+*.min.js
+*.asset.php
